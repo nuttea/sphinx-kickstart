@@ -3,21 +3,71 @@ Sphinx Kickstart
 ################
 
 Set up your environment
+#######################
 
+Local setup (Mac OS X)
+***********************
+
+Setup Python environment
+========================
+
+Mac OS X
+--------
+
+Install xcode-select that will be needed for 'make' developer command
+
+.. code-block
+
+  xcode-select --Install
+
+Python and Sphinx
+-----------------
+
+Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown support extensions
+
+.. code-block
 
   virtualenv sphinx
   cd sphinx
   source bin/activate
+  pip install sphinx
+  pip install sphinx-rth-theme
+  pip install recommonmark
 
-  mkdir sphinx-kickstart
-  cd sphinx-kickstart
+Update conf.py file
+-------------------
+
+.. code-block
+
+  import sphinx_rtd_theme
+  
+  extensions = [
+      "recommonmark",
+      "sphinx_rtd_theme"
+  ]
+
+  html_theme = "sphinx_rtd_theme"
+
+
+To use the theme in your Sphinx project, you will need to add the following to your conf.py file:
+
+
+
+Create a project folder and initialize Sphinx
+---------------------------------------------
+
+.. code-block
 
   export USER=<your git username>
   export REPONAME=<new git repo name>
 
-  #create new git repo
+  mkdir $REPONAME
+  cd $REPONAME
+
+  # create new git repo
   curl -u $USER https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'"}'
 
+  git
   git init
   touch README.md
   touch .gitignore
