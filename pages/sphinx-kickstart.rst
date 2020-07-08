@@ -43,25 +43,6 @@ Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown su
   pip install sphinx-rth-theme
   pip install recommonmark
 
-Update conf.py file
--------------------
-
-.. code-block::
-
-  import sphinx_rtd_theme
-  
-  extensions = [
-      "recommonmark",
-      "sphinx_rtd_theme"
-  ]
-
-  html_theme = "sphinx_rtd_theme"
-
-
-To use the theme in your Sphinx project, you will need to add the following to your conf.py file:
-
-
-
 Create a project folder and initialize Sphinx
 ---------------------------------------------
 
@@ -80,14 +61,48 @@ Create new  github repo
 .. code-block::
 
   # create new git repo
-  curl -u $USER https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'"}'
+  curl \
+    -u $USER \
+    https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'"}'
 
-  git
+  curl \
+    -X POST \
+    -u $USER \
+    -H "Accept: application/vnd.github.switcheroo-preview+json" \
+    https://api.github.com/repos/$USER/$REPONAME/pages \
+    -d '{"source": {"branch":"master", "path": "/docs"}}'
+
+Init new git and make your first commit
+
+.. code-block::
+
   git init
-  touch README.md
-  touch .gitignore
+  
+  cat <<EOF >>.gitignore
+  _build
+  _templates
+  EOF
+
+  mkdir _static
+  mkdir docs
+
   git remote add origin https://github.com/$USER/$REPONAME.git
   git add .
   git commit -m "initial commit"
   git push origin master
+
+Download and unzip Sphinx Read the Docs template and build your first pages
+
+.. code-block::
+
+  wget https://github.com/nuttea/sphinx-kickstart/raw/master/sphinx_rtd_template.zip
+  unzip sphinx_rtd_template.zip
+  rm sphinx_rtd_template.zip
+
+Build, commit and push your RTD site to 'docs'
+
+.. code-block::
+
+  ./commit.sh
+
 
