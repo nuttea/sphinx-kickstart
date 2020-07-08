@@ -16,7 +16,7 @@ Mac OS X
 
 Install xcode-select that will be needed for 'make' developer command
 
-.. code-block
+.. code-block::
 
   xcode-select --Install
 
@@ -25,7 +25,7 @@ Python and Sphinx
 
 Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown support extensions
 
-.. code-block
+.. code-block::
 
   virtualenv sphinx
   cd sphinx
@@ -37,7 +37,7 @@ Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown su
 Update conf.py file
 -------------------
 
-.. code-block
+.. code-block::
 
   import sphinx_rtd_theme
   
@@ -56,7 +56,7 @@ To use the theme in your Sphinx project, you will need to add the following to y
 Create a project folder and initialize Sphinx
 ---------------------------------------------
 
-.. code-block
+.. code-block::
 
   export USER=<your git username>
   export REPONAME=<new git repo name>

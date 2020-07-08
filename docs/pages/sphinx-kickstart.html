@@ -169,17 +169,57 @@
 <div class="section" id="mac-os-x">
 <h5>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h5>
 <p>Install xcode-select that will be needed for ‘make’ developer command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">Install</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="python-and-sphinx">
 <h5>Python and Sphinx<a class="headerlink" href="#python-and-sphinx" title="Permalink to this headline">¶</a></h5>
 <p>Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown support extensions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">sphinx</span>
+<span class="n">cd</span> <span class="n">sphinx</span>
+<span class="n">source</span> <span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rth</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="update-conf-py-file">
 <h5>Update conf.py file<a class="headerlink" href="#update-conf-py-file" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;recommonmark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+<span class="p">]</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+</pre></div>
+</div>
 <p>To use the theme in your Sphinx project, you will need to add the following to your conf.py file:</p>
 </div>
 <div class="section" id="create-a-project-folder-and-initialize-sphinx">
 <h5>Create a project folder and initialize Sphinx<a class="headerlink" href="#create-a-project-folder-and-initialize-sphinx" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export USER=&lt;your git username&gt;
+export REPONAME=&lt;new git repo name&gt;
+
+mkdir $REPONAME
+cd $REPONAME
+
+# create new git repo
+curl -u $USER https://api.github.com/user/repos -d &#39;{&quot;name&quot;:&quot;&#39;&quot;$REPONAME&quot;&#39;&quot;}&#39;
+
+git
+git init
+touch README.md
+touch .gitignore
+git remote add origin https://github.com/$USER/$REPONAME.git
+git add .
+git commit -m &quot;initial commit&quot;
+git push origin master
+</pre></div>
+</div>
 </div>
 </div>
 </div>
