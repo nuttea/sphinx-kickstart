@@ -4,7 +4,7 @@ Sphinx Kickstart
 
 Set up your environment
 
-``
+
   virtualenv sphinx
   cd sphinx
   source bin/activate
