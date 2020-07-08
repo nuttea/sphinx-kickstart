@@ -172,9 +172,14 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">Install</span>
 </pre></div>
 </div>
+<p>Python</p>
+<p>Install python3 from brew</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">python3</span>
+</pre></div>
 </div>
-<div class="section" id="python-and-sphinx">
-<h5>Python and Sphinx<a class="headerlink" href="#python-and-sphinx" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="setup-python-and-sphinx">
+<h5>Setup Python and Sphinx<a class="headerlink" href="#setup-python-and-sphinx" title="Permalink to this headline">¶</a></h5>
 <p>Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown support extensions</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">sphinx</span>
 <span class="n">cd</span> <span class="n">sphinx</span>
@@ -201,13 +206,16 @@
 </div>
 <div class="section" id="create-a-project-folder-and-initialize-sphinx">
 <h5>Create a project folder and initialize Sphinx<a class="headerlink" href="#create-a-project-folder-and-initialize-sphinx" title="Permalink to this headline">¶</a></h5>
+<p>Set your git repo username and repo name in ENV vars</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export USER=&lt;your git username&gt;
 export REPONAME=&lt;new git repo name&gt;
 
 mkdir $REPONAME
 cd $REPONAME
-
-# create new git repo
+</pre></div>
+</div>
+<p>Create new  github repo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># create new git repo
 curl -u $USER https://api.github.com/user/repos -d &#39;{&quot;name&quot;:&quot;&#39;&quot;$REPONAME&quot;&#39;&quot;}&#39;
 
 git

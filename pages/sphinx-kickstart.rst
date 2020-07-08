@@ -20,8 +20,17 @@ Install xcode-select that will be needed for 'make' developer command
 
   xcode-select --Install
 
-Python and Sphinx
------------------
+Python
+
+Install python3 from brew
+
+.. code-block::
+
+  brew install python3
+
+
+Setup Python and Sphinx
+-----------------------
 
 Setup python virtualenv and instakk sphinx, read-the-docs themes and markdown support extensions
 
@@ -56,6 +65,8 @@ To use the theme in your Sphinx project, you will need to add the following to y
 Create a project folder and initialize Sphinx
 ---------------------------------------------
 
+Set your git repo username and repo name in ENV vars
+
 .. code-block::
 
   export USER=<your git username>
@@ -63,6 +74,10 @@ Create a project folder and initialize Sphinx
 
   mkdir $REPONAME
   cd $REPONAME
+
+Create new  github repo
+
+.. code-block::
 
   # create new git repo
   curl -u $USER https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'"}'
